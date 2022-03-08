@@ -1,0 +1,167 @@
+//variables
+int introChoice;
+char username[20];
+char companion[15];
+char finalBoss[30];
+int roadmap; 
+int middleChoice1, middleChoice2, middleChoice3;
+int begin = randint(1,2);
+string_t begin2;
+int x = randint(1,12);
+int h = randint(80, 120); 
+
+
+//6 functions
+void intro(){
+    printf("What is your username (20 letters max): ");
+    scanf("%s", &username);
+    printf("Whos is the friend that accompanies you: ");
+    scanf("%s", &companion);
+    printf("What/Who is the final boss: ");
+    scanf("%s", &finalBoss);
+    printf("Would you like to see the roadmap (1: yes, 2: no): "); 
+    scanf("%i", &roadmap); 
+    while(roadmap != 1 && roadmap != 2){
+        printf("That is not a choice, please choose either '1' or '2': \n");
+        scanf("%i", &roadmap);
+    }
+    //asks the user if they want a roadmap
+    if (roadmap == 1){
+        printf("Swordsman has three dungeons, 1, 2 or 3. Dungeon 1 you die, dungeon 2 you win and dungeon 3 you live but don't take out the boss. If you chose archer there is 3 caves. Cave 1 and 3 you die, but in Cave 2 you win. Now with the Mage there is 3 Tunnels. In Tunnel 1 is victorious, Tunnel 2 is death and Tunnel 3 is not dying.\n\n");
+        } 
+    //first random number generator which decides between if the user sees a merchant or traveler
+    if (begin == 1){
+        begin2 = "merchant";
+    }
+    else if (begin == 2) {
+        begin2 = "traveler"; 
+    }
+    //intro of the story
+    printf(username, " starts a game with ", companion, ". A ", begin2," appears offering three sets of gear to choose from which do you choose. The swordsman, archer, or the mage. The objective of the game is to defeat the final boss, ",finalBoss,"which has ",h," hp. Each role has a special weapon and different attributes. Choose carely because this will be finalized and you cannot change later. Which will you choose?\n");
+    printf("Choose your class: Swordsman(1), Archer(2), or Mage(3)\n");
+    scanf("%i", &introChoice);
+    while(introChoice != 1 && introChoice != 2 && introChoice != 3){
+        printf("That is not a class. Please choose '1', '2', or '3'\n");
+        scanf("%i", &introChoice);
+    }
+}
+//Swordsmen choice, if the user picks option 1 from the intro (Middle Choice 1)
+void middle1(){
+    printf("You chose to be a Swordsman. Swordsman, a class that comes along with a sword to help you on your adventure. Swordsman has an average speed, but a good amount of health. You and ", companion, " split ways trying to become the better swordsman. On quest #",x," you find a chest which you decide to open finding a dagger. Eventually you think you’re ready to face the ",finalBoss,". Before you actually take on the boss you have to choose between three dungeons, which will you choose?\n");
+    printf("What dungeon do you want to enter: 1, 2, or 3\n");
+    scanf("%i", &middleChoice1);
+    while(middleChoice1 != 1 && middleChoice1 != 2 && middleChoice1 != 3){
+        printf("That is not a Dungeon, choose between '1', '2', or '3' \n");
+        scanf("%i", &middleChoice1); 
+    }
+}
+//If the user picks option 2, it will lead to Archer (Middle Choice 2)
+void middle2(){
+    printf("You selected the archer. An archer comes with a bow and arrows. Your attribute is a fast speed, very stealthy however you have a low amount of health. You were assigned a quest to complete a quest which you do with ", companion, ". Before actually taking on the ",finalBoss,", you decide to scout out the area and you see 3 Caves. Heading back to the village you plot which cave you will choose.\n");
+    printf("Between the 3 Caves, which do you enter: 1, 2 or 3\n");
+    scanf("%i", &middleChoice2);
+    while(middleChoice2 != 1 && middleChoice2 != 2 && middleChoice2 != 3){
+        printf("That is not a Cave, choose between '1', '2', or '3' \n");
+        scanf("%i", &middleChoice2); 
+    }
+}
+//The third option if the user decides to pick it will be Mage (Middle Choice 3)
+void middle3(){    
+    printf("Mage is the class you chose. A mage is a person who uses magic to help defeat the ",finalBoss,". A mage is usually slow, but has a good amount of health. You spend every day practicing your magic tryna top the top mage, ", companion,". You learn new spells on a regular basis like lightning or fire. On a quest you see three dungeons, which will you attend?\n");
+    printf("Do you want to enter Tunnel: 1, 2, or 3\n");
+    scanf("%i", &middleChoice3);
+    while(middleChoice3 != 1 && middleChoice3 != 2 && middleChoice3 != 3){
+        printf("That is not a Tunnel, choose between '1', '2', or '3' \n");
+        scanf("%i", &middleChoice3); 
+    }
+}   
+//End one for Middle Choice 1, (Option 1 [For MiddleChoice] then Option 1 [EndChoice] End1
+void end1(){
+    printf("You decided to enter Dungeon 1. You’ve been battling monsters for a long time, your durability on the sword weakens as you do too. You rest up for the night getting ready for tomorrow a new day… You awaken ready to fight the ", finalBoss, " forgetting that your sword is about to break. You go straight into battle and the first strike your sword breaks. You try to run away, but do not succeed and the boss devours you. You died thinking about ", companion,".");
+    exit(1);
+}
+//End two for Middle Choice 1, (Option 1 [For MiddleChoice] then Option 2 [For EndChoice] End2
+void end2(){
+    printf("You’ve been doing everything well, good swordsmanship and you’re top 10 locally. However, just to make sure you will beat the final boss, you learn a new technique with your sword which makes you now top 5 locally. With your new skill you are ready to face the ",finalBoss, " ready as ever you enter Dungeon 2 with no fear. The boss looks scarier than you imagined, but still you don't run away. With your new technique and your high level plays you defeat the boss easily and return back to the village with a souvenir and everyone congratulates you, even ", companion, "does too.\n"); 
+    exit(1);
+}
+//End three for Middle Choice 1, (Option 1 [For MiddleChoice] then Option 3 [For EndChoice] End3
+void end3(){
+    printf("Day after day, you grind to get better, as each day passes the more skill you gain. Waiting for better equipment you still train everyday. Entering Dungeon 3, but you were afraid of the ", finalBoss, ", so you keep training over and over until you’re ready. You realize you still aren’t ready so you grind and grind. Finally you think you’re ready, but ", companion, " comes back from the boss and says it’s grueling, causing you to be more afraid, and so you go back to grinding. And you keep just playing and improving yourself to get better. Eventually you just get tired of the game and don’t take on the boss.\n");
+    exit(1); 
+}
+//End one for Middle Choice 2, (Option 2 [For MiddleChoice] then Option 1 [For EndChoice] End4
+void end4(){
+    printf("The day previously before choosing to go into Cave 1 you found a treasure chest at the end of one of your quests. And with the key you found previously you open the chest and find special arrows within it. Wondering what it is you try one of each arrows. The first arrow was a fire arrow, the second arrow was a shocking/lightning arrow and the third arrow was a freeze one. You gave half to ",companion, " for helping you on the quest. You have 5 arrows of each type left, you store them at your house saving them for the final boss. To make sure you use the arrows correctly you pull up a book about them and study. Knowing more about the special arrows you are ready to enter Cave 1 and face the boss and eventually using the majority of the arrows you kill the, ",finalBoss,". \n"); 
+    exit(1);
+}
+//End two for Middle Choice 2, (Option 2 [For MiddleChoice] then Option 2 [For EndChoice] End5
+void end5(){
+    printf("You continue your journey like every other day, killing monsters and getting ready for the final boss, but this day was special because you stumbled across your friend. You now train with ", companion," working together daily. You guys have the team synergy working together looking stronger than before, you teach your friend new things and they teach you techniques. Both ready to fight the boss, you both go into Cave 2 together. You guys were synchronized together and defeated the " ,finalBoss,". And continued to work together as best friends.\n");
+    exit(1);
+}
+//End three for Middle Choice 2, (Option 2 [For MiddleChoice] then Option 3 [For EndChoice] End6
+void end6(){
+    printf("The day before you and ", companion," ways after finishing the quest. You think you’re ready for the boss, so you rest up for the night getting ready for tomorrow, the final day. You encounter monsters on the way, you use up your arrows to fight against them. Knowing you had plenty you didn’t go back to get some more. Finally safe, you reach the boss. The ",finalBoss," is stronger than you expected, but you still try to push through. You shot over 50 arrows, and eventually you ran out of arrows and accepted your defeat. Sadly the boss had killed you.\n");
+    exit(1);
+}
+//End one for Middle Choice 3, (Option 3 [For MiddleChoice] then Option 1 [For EndChoice] End7
+void end7(){
+    printf("You selected the magic because you have a lot of knowledge on magic so you can geek out on this class. Your knowledge is so good that you actually become the master mage and every mage comes to your house to learn and you even see ", companion," which was surprising. You take your new group of students on a quest to help them out and see their skills. Eventually your students get amazing and you take them to Tunnel 1, however they struggle against the boss. You decide to jump in and help them and you kill the boss with one attack/spell. You and your students have killed the ",finalBoss,". GGEZ\n");
+    exit(1);
+}
+//End two for Middle Choice 3, (Option 3 [For MiddleChoice] then Option 2 [For EndChoice] End8
+void end8(){
+    printf("You practice your magic to become a better mage before entering the first dungeon to take the ",finalBoss,". You want to learn the impossible, poison, to become the best. While learning the skill, you accidentally poison yourself but you don’t think much about it so you continue practicing. After hours of practicing you head to bed, proud of what you accomplished today. Forgetting about the poison you go to sleep, but the poison just boils in your body doing inhumane stuff. The next day you ask ",companion," to come over because you don’t feel well. Trying to take a nap to hide the pain you didn’t wake up, you died from the poison, disappointed in yourself for not actually going into Tunnel 2 and trying to defeat the final boss.\n");
+    exit(1);
+}
+//End three for Middle Choice 3, (Option 3 [For MiddleChoice] then Option 3 [For EndChoice] End9
+void end9(){
+    printf("You accidentally went into Tunnel 3 not knowing you were facing the final boss. With the ",finalBoss," being harder than you thought you nearly die, but the boss gives you an option to either join the dark side or face the same fate as your friend. Of course you join the dark side because you’re scared of dying. As joining the side the boss teaches you dark magic to help defeat off other attackers. You and the ",finalBoss," become best friends and enjoy each other's company, learning new magic every day. But someone comes to try to defeat the boss, however with your new skill and friendship it was easy to defeat this invader. You are the dark side now. And betrayed ", companion,".\n");
+    exit(1);
+}
+
+int main(){  //main program to run (logic)
+    intro();
+    if(1 == introChoice){
+        middle1();
+        if(middleChoice1 == 1){
+            end1();
+        }
+        if(middleChoice1 == 2){
+            end2();
+        }
+        if(middleChoice1 == 3){
+            end3();
+        }
+    }
+    if(2 == introChoice){
+        middle2();
+        if(middleChoice2 == 1){
+            end4();
+        }
+        if(middleChoice2 ==2){
+            end5();
+        }
+        if(middleChoice2 ==3){
+            end6();
+        }
+    }
+    if(3 == introChoice){
+        middle3();
+        if(middleChoice3 ==1){
+            end7();
+        }
+        if(middleChoice2 ==2){
+            end8();
+        }
+        if(middleChoice3 ==3){
+            end9();
+        }
+
+    }
+        
+
+
+}
+
